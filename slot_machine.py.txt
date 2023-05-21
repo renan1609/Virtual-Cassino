@@ -1,0 +1,35 @@
+import random
+
+# Define the symbols and their respective probabilities
+symbols = ["Cherry", "Lemon", "Orange", "Plum", "Bell", "Bar"]
+probabilities = [0.3, 0.2, 0.15, 0.1, 0.1, 0.05]
+
+# Function to spin the slot machine
+def spin_slot_machine():
+    # Generate a random symbol based on probabilities
+    symbol = random.choices(symbols, probabilities)[0]
+    return symbol
+
+# Function to play the slot machine game
+def play_slot_machine():
+    print("Welcome to the Slot Machine!")
+    while True:
+        input("Press Enter to spin the reels...")
+        symbol1 = spin_slot_machine()
+        symbol2 = spin_slot_machine()
+        symbol3 = spin_slot_machine()
+
+        print("\n--- Result ---")
+        print(f"   {symbol1}  |  {symbol2}  |  {symbol3}")
+
+        if symbol1 == symbol2 == symbol3:
+            print("Congratulations! You won!")
+        else:
+            print("Sorry, you didn't win this time.")
+
+        play_again = input("\nDo you want to play again? (y/n): ")
+        if play_again.lower() != "y":
+            break
+
+# Start the game
+play_slot_machine()
